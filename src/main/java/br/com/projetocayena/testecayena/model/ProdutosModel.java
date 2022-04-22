@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -30,8 +29,18 @@ public class ProdutosModel {
 	private LocalDate data_atualizacao;
 	
 	@ManyToOne
-	@JoinColumn(nullable = false)
-	private FornecedoresModel fornecedores;
+	@JoinColumn(name="id_fornecedor")
+	private FornecedoresModel fornecedoresModel;
+
+	
+	
+	public FornecedoresModel getFornecedoresModel() {
+		return fornecedoresModel;
+	}
+
+	public void setFornecedoresModel(FornecedoresModel fornecedoresModel) {
+		this.fornecedoresModel = fornecedoresModel;
+	}
 
 	public long getId() {
 		return id;
@@ -81,13 +90,7 @@ public class ProdutosModel {
 		this.data_atualizacao = data_atualizacao;
 	}
 
-	public FornecedoresModel getFornecedores() {
-		return fornecedores;
-	}
-
-	public void setFornecedores(FornecedoresModel fornecedores) {
-		this.fornecedores = fornecedores;
-	}
+	
 	
 
 
